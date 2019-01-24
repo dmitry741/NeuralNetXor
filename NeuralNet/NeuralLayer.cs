@@ -21,11 +21,8 @@ namespace NeuralNetLib
             return m_Weight[layer];
         }
 
-        public IEnumerator GetEnumerator()
-        {
-            return m_Weight.GetEnumerator();
-        }
-
         public int LayerSize => (m_Weight != null) ? m_Weight.Count : 0;
+
+        public List<double[]> Weights => m_Weight;
     }
 }

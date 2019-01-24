@@ -9,12 +9,7 @@ namespace NeuralNetLib
 {
     public class NeuralNet : INeuralNet
     {
-        List<NeuralLayer> m_NeuronLayers = null;
-
-        public NeuralNet()
-        {
-            m_NeuronLayers = new List<NeuralLayer>();
-        }
+        List<NeuralLayer> m_NeuronLayers = new List<NeuralLayer>();
 
         public void AddLayer(NeuralLayer layer)
         {
@@ -23,13 +18,13 @@ namespace NeuralNetLib
 
         #region === private ===
 
-        double Sigmoid(double x)
+        static double Sigmoid(double x)
         {
             return 1.0 / (1 + Math.Exp(-x));
             //return x >= 0.5 ? 1 : 0;
         }
 
-        double NeuronOutput(List<double> w, List<double> x)
+        static double NeuronOutput(List<double> w, List<double> x)
         {
             return Sigmoid(VectorCore.Dot(w, x));
         }
@@ -42,17 +37,8 @@ namespace NeuralNetLib
 
             foreach (NeuralLayer layer in m_NeuronLayers)
             {
-                List<double> inputNew = new List<double>();
-                int wc = layer.LayerSize;
-
-                for (int i = 0; i < wc; i++)
-                {
-                    double[] w = layer.GetWeights(i);
-                    double r = NeuronOutput(w.ToList(), input);
-                    inputNew.Add(r);
-                }
-
-                input = inputNew;
+                var inputNew = layer.Weights.Select(z => NeuronOutput(z.ToList(), input));
+                input = inputNew.ToList();
             }
 
             return input[0];

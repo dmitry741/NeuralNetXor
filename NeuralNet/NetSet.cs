@@ -34,14 +34,6 @@ namespace NeuralNetLib
         {
             get
             {
-                //Neuron n11 = new Neuron(new List<double> { 20, 20, 0 });
-                //Neuron n21 = new Neuron(new List<double> { 20, 20, 0 });
-                //Neuron n31 = new Neuron(new List<double> { -30, -10, 0 });
-
-                //Neuron n12 = new Neuron(new List<double> { -60 });
-                //Neuron n22 = new Neuron(new List<double> { 60 });
-                //Neuron n23 = new Neuron(new List<double> { -30 });
-
                 NeuralLayer layer1 = new NeuralLayer();
 
                 layer1.AddWeights(new double[] { 20, 20, -30 });
