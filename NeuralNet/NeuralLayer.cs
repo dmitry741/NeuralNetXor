@@ -9,23 +9,23 @@ namespace NeuralNetLib
 {
     public class NeuralLayer
     {
-        List<Neuron> m_Neurons = null;
-
-        public NeuralLayer()
+        List<double[]> m_Weight = new List<double[]>();
+       
+        public void AddWeights(double[] w)
         {
-            m_Neurons = new List<Neuron>();
+            m_Weight.Add(w);
         }
 
-        public void AddNeuron(Neuron neuron)
+        public double[] GetWeights(int layer)
         {
-            m_Neurons.Add(neuron);
+            return m_Weight[layer];
         }
 
         public IEnumerator GetEnumerator()
         {
-            return m_Neurons.GetEnumerator();
+            return m_Weight.GetEnumerator();
         }
 
-        public List<Neuron> Neurons => m_Neurons;
+        public int LayerSize => (m_Weight != null) ? m_Weight.Count : 0;
     }
 }

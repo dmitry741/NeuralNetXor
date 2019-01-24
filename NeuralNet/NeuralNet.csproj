@@ -46,7 +46,6 @@
     <Compile Include="NetSet.cs" />
     <Compile Include="NeuralLayer.cs" />
     <Compile Include="NeuralNet.cs" />
-    <Compile Include="Neuron.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

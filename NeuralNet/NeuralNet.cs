@@ -43,18 +43,12 @@ namespace NeuralNetLib
             foreach (NeuralLayer layer in m_NeuronLayers)
             {
                 List<double> inputNew = new List<double>();
-                int wc = layer.Neurons[0].Weights.Count;
+                int wc = layer.LayerSize;
 
-                for (int k = 0; k < wc; k++)
+                for (int i = 0; i < wc; i++)
                 {
-                    List<double> w = new List<double>();
-
-                    for (int j = 0; j < layer.Neurons.Count; j++)
-                    {
-                        w.Add(layer.Neurons[j].Weights[k]);
-                    }
-
-                    double r = NeuronOutput(w, input);
+                    double[] w = layer.GetWeights(i);
+                    double r = NeuronOutput(w.ToList(), input);
                     inputNew.Add(r);
                 }
 
