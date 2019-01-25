@@ -19,15 +19,24 @@ namespace UnitTestProject1
             Assert.IsTrue(VectorCore.Dot(w, x) == 50);
         }
 
+        [TestMethod]
+        public void TestDistance()
+        {
+            double[] x = new double[] { 1, 0, 2 };
+            double[] y = new double[] { 0, 1, 0 };
+
+            Assert.IsTrue(Math.Abs(VectorCore.Distance(x, y) - Math.Sqrt(6)) < 0.0001);
+        }
+
         bool ComparePredictAndTest(INeuralNet net, List<double[]> X, List<double> y, double epsilon)
         {
             bool result = true;
 
             for (int i = 0; i < X.Count; i++)
             {
-                double predict = net.FeedForward(X[i].ToList());
+                double[] predict = net.FeedForward(X[i].ToList());
 
-                if (Math.Abs(predict - y[i]) > epsilon)
+                if (Math.Abs(predict[0] - y[i]) > epsilon)
                 {
                     result = false;
                     break;

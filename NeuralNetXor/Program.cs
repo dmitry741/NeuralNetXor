@@ -27,9 +27,19 @@ namespace NeuralNetXor
 
             foreach (double[] xin in X)
             {
-                double result = net.FeedForward(xin.ToList());
-                Console.WriteLine(string.Format("{0} {1}, xor: {2}", xin[0], xin[1], Math.Round(result, 3)));
+                double[] result = net.FeedForward(xin.ToList());
+                Console.WriteLine(string.Format("{0} {1}, xor: {2}", xin[0], xin[1], Math.Round(result[0], 3)));
             }
+
+            List<double[]> y = new List<double[]>
+            {
+                new double[] { 0 },
+                new double[] { 1 },
+                new double[] { 1 },
+                new double[] { 0 }
+            };
+
+            //net.Fit(X, y);
 
             Console.ReadLine();
         }

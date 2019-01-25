@@ -8,6 +8,8 @@ namespace NeuralNet.Base
 {
     public interface INeuralNet
     {
-        double FeedForward(List<double> X);
+        double[] FeedForward(List<double> X);
+
+        void Fit(List<double[]> X, List<double[]> y);
     }
 }
